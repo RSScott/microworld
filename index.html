@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Welcome to Microworld testing</title>
+	<script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="CSS/style.css">
+</head>
+<body>
+<h1>Microworld Game</h1>
+<div id="wrapper">
+	
+	
+			<script type="text/javascript">
+			
+		
+			
+			var game = new Phaser.Game(1000, 800, Phaser.AUTO, 'wrapper', { preload: preload, create: create, update: update });
+
+			function preload() {
+
+			    game.load.image('sky', 'assets/sky.png');
+			    game.load.image('obi', 'assets/obiwan.png');
+			    game.load.image('left', 'assets/left.png');
+				game.load.image('right', 'assets/right.png');
+			    
+			}
+			
+			var button;
+			
+			function leftButton() {
+				
+				var left = game.add.sprite(200,200, 'left');
+				left.inputEnabled = true;
+				left.input.enableDrag(true);
+			}
+			
+			
+				
+			function Rightbutton(make) {
+				
+					this.make = function rightButton() {
+									game.add.sprite(200,300, 'right');
+									right.inputEnabled = true;
+									right.input.enableDrag(true);
+									right.input.enableSnap(32, 32, false, true);
+									}
+					
+					function makeObiInvisible(){obi.visible =! obi.visible};
+				}
+		
+					
+			function create() {				
+
+			    game.add.sprite(100, 100, 'sky'); //  A simple background for our game
+			    var obi = game.add.sprite(700,300, 'obi');
+			    obi.inputEnabled = true;
+			    obi.input.enableDrag(true);
+			    obi.input.enableSnap(120,120, true, true);
+			    leftButton();
+			    var rightButton = new Rightbutton(make);			    
+			    button = game.add.button(400, 400, 'obi', rightButton.makeObiInvisible);
+			    			    		    			    
+			}
+
+			function update() {
+			}
+			</script>
+</div>		
+</body>
+</html>
